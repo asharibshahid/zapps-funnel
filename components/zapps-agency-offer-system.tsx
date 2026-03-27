@@ -1,5 +1,7 @@
 "use client"
 
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
 import {
   ArrowRight,
@@ -1746,6 +1748,18 @@ const advancedRequirementSet = new Set([
 
 function cn(...classes: (string | boolean | undefined | null)[]) {
   return classes.filter(Boolean).join(' ');
+}
+
+// Helper function to get solution href from problem solution ID
+function getSolutionHref(solutionId: string): string {
+  const solutionMap: Record<string, string> = {
+    'websites': '/solutions/websites',
+    'systems': '/solutions/systems',
+    'apps': '/solutions/ecommerce',
+    'ai-automation': '/solutions/ai-automation',
+    'ecommerce': '/solutions/ecommerce',
+  };
+  return solutionMap[solutionId] || '/solutions';
 }
 
 function formatCurrency(value: number) {

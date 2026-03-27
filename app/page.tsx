@@ -1,4 +1,5 @@
 import ZappsAgencyOfferSystem from "@/components/zapps-agency-offer-system"
+import { ProblemCardsSection } from "@/components/problem-cards-section"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
@@ -7,6 +8,7 @@ export default function Home() {
   return (
     <>
       <ZappsAgencyOfferSystem />
+      <ProblemCardsSection />
       
       {/* Link to new solutions pages */}
       <div className="fixed bottom-6 right-6 z-50">
