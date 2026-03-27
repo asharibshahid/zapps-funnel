@@ -1,6 +1,6 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import {
   ArrowLeft,
   ArrowRight,
@@ -21,8 +21,6 @@ import {
   Check,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 const AI_SOLUTIONS = [
   { id: 1, name: 'AI Chatbots', description: 'Intelligent customer support available 24/7', icon: MessageSquare },
@@ -98,8 +96,6 @@ const AI_PACKAGES = [
 ]
 
 export default function AIAutomationPage() {
-  const router = useRouter()
-
   const businessImpacts = [
     { icon: Clock3, text: 'Save 10+ hours per week on manual tasks' },
     { icon: TrendingUp, text: 'Increase team productivity by 40%' },
@@ -108,195 +104,173 @@ export default function AIAutomationPage() {
     { icon: Sparkles, text: 'Data-driven decision making' },
   ]
 
-  const transformations = [
-    {
-      title: 'Before',
-      items: [
-        'Manual, repetitive tasks eating up time',
-        'Slow response to customer inquiries',
-        'Data scattered across multiple tools',
-        'Human errors in routine processes',
-        'Limited capacity to scale operations',
-        'No insights from business data',
-      ],
-    },
-    {
-      title: 'After',
-      items: [
-        'Automated workflows running 24/7',
-        'Instant AI-powered customer responses',
-        'Centralized, automated data processing',
-        'Error-free automated processes',
-        'Scalable infrastructure ready to grow',
-        'AI-driven insights & recommendations',
-      ],
-    },
-  ]
-
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-      {/* Back Button */}
-      <div className="px-4 py-4 max-w-6xl mx-auto">
-        <Button
-          variant="ghost"
-          onClick={() => router.back()}
-          className="text-slate-600 hover:text-slate-900"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Solutions
-        </Button>
+    <main className="relative min-h-screen bg-background overflow-hidden">
+      {/* Animated background elements */}
+      <div className="fixed inset-0 z-0">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full mix-blend-multiply filter blur-3xl opacity-50 float"></div>
+        <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-accent/20 rounded-full mix-blend-multiply filter blur-3xl opacity-50 float-delay-1"></div>
+        <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-secondary/20 rounded-full mix-blend-multiply filter blur-3xl opacity-50 float-delay-2"></div>
       </div>
 
-      {/* Header */}
-      <section className="px-4 py-16 max-w-6xl mx-auto">
-        <div className="flex items-start gap-6 mb-8">
-          <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-purple-600 to-blue-600 p-4 flex-shrink-0">
-            <Bot className="w-full h-full text-white" />
-          </div>
-          <div>
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-              AI & Automation System
-            </h1>
-            <p className="text-xl text-slate-600 mb-6 text-balance">
-              Intelligent automation solutions that streamline your workflows, reduce manual tasks, and leverage AI to boost productivity.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <div className="px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-semibold">
-                3-4 weeks delivery
-              </div>
-              <div className="px-4 py-2 rounded-full bg-blue-100 text-blue-700 font-semibold">
-                Full AI Integration
+      {/* Content */}
+      <div className="relative z-10">
+        {/* Back Button */}
+        <div className="px-4 py-4 max-w-7xl mx-auto">
+          <Link href="/solutions">
+            <Button variant="ghost" className="text-foreground hover:bg-foreground/10">
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to Solutions
+            </Button>
+          </Link>
+        </div>
+
+        {/* Header */}
+        <section className="px-4 pt-8 pb-16 max-w-7xl mx-auto">
+          <div className="flex items-start gap-8 mb-8">
+            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary to-accent p-5 flex-shrink-0 glow hover:scale-110 transition-transform duration-500" style={{animation: 'slideUp 0.8s ease-out'}}>
+              <Bot className="w-full h-full text-foreground" />
+            </div>
+            <div style={{animation: 'slideUp 0.8s ease-out 0.1s both'}}>
+              <h1 className="text-5xl sm:text-6xl font-bold mb-4 gradient-text">
+                AI & Automation
+              </h1>
+              <p className="text-lg text-muted-foreground mb-6 max-w-2xl">
+                Intelligent automation solutions that streamline your workflows, reduce manual tasks, and leverage AI to boost productivity by 40%+.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <div className="glass px-4 py-2 rounded-full text-sm font-semibold text-primary">
+                  3-4 weeks delivery
+                </div>
+                <div className="glass px-4 py-2 rounded-full text-sm font-semibold text-accent">
+                  Full AI Integration
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Business Impact */}
-      <section className="px-4 py-12 bg-slate-100">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-slate-900 mb-8">Business Impact</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Business Impact */}
+        <section className="px-4 py-16 max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 gradient-text text-center" style={{animation: 'slideUp 0.8s ease-out 0.2s both'}}>Business Impact</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             {businessImpacts.map((impact, idx) => {
               const Icon = impact.icon
               return (
-                <Card key={idx} className="p-6 border-0 bg-white">
-                  <div className="flex gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-600 to-blue-600 p-3 flex-shrink-0">
-                      <Icon className="w-full h-full text-white" />
+                <div
+                  key={idx}
+                  className="glass-dark rounded-xl p-6 group hover:bg-black/40 transition-all duration-500 hover:scale-105"
+                  style={{animation: `slideUp 0.6s ease-out ${0.3 + idx * 0.1}s both`}}
+                >
+                  <div className="flex flex-col items-center gap-3 text-center">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent p-3 flex-shrink-0 group-hover:scale-110 transition-transform duration-500 glow">
+                      <Icon className="w-full h-full text-foreground" />
                     </div>
-                    <p className="text-slate-700 font-semibold">{impact.text}</p>
+                    <p className="text-sm font-semibold text-foreground group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text transition-all">{impact.text}</p>
                   </div>
-                </Card>
+                </div>
               )
             })}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* AI Solutions Grid */}
-      <section className="px-4 py-16 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-slate-900 mb-8">Available AI Solutions</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {AI_SOLUTIONS.map((solution) => {
-            const Icon = solution.icon
-            return (
-              <Card key={solution.id} className="p-6 border-slate-200 hover:shadow-md transition-shadow">
-                <div className="flex items-start gap-4 mb-3">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-600 to-blue-600 p-2 flex-shrink-0">
-                    <Icon className="w-full h-full text-white" />
+        {/* AI Solutions Grid */}
+        <section className="px-4 py-16 max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 gradient-text" style={{animation: 'slideUp 0.8s ease-out 0.3s both'}}>Available AI Solutions</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {AI_SOLUTIONS.map((solution, idx) => {
+              const Icon = solution.icon
+              return (
+                <div
+                  key={solution.id}
+                  className="glass-dark rounded-xl p-6 group hover:bg-black/40 transition-all duration-500 cursor-pointer overflow-hidden"
+                  style={{animation: `slideUp 0.6s ease-out ${0.4 + idx * 0.08}s both`}}
+                >
+                  <div className="absolute inset-0 shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="relative z-10 flex items-start gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent p-2 flex-shrink-0 group-hover:scale-110 transition-transform duration-500 glow">
+                      <Icon className="w-full h-full text-foreground" />
+                    </div>
+                    <div className="flex-grow">
+                      <h3 className="font-semibold text-foreground group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text mb-1 transition-all">{solution.name}</h3>
+                      <p className="text-sm text-muted-foreground group-hover:text-foreground/70 transition-colors">{solution.description}</p>
+                    </div>
                   </div>
-                  <h3 className="font-semibold text-slate-900">{solution.name}</h3>
                 </div>
-                <p className="text-sm text-slate-600">{solution.description}</p>
-              </Card>
-            )
-          })}
-        </div>
-      </section>
+              )
+            })}
+          </div>
+        </section>
 
-      {/* Transformation */}
-      <section className="px-4 py-16 bg-slate-100">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">Your Journey</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {transformations.map((section, idx) => (
-              <div key={idx}>
-                <h3 className="text-2xl font-bold text-slate-900 mb-6">{section.title}</h3>
-                <ul className="space-y-3">
-                  {section.items.map((item, itemIdx) => (
-                    <li key={itemIdx} className="flex gap-3">
-                      {idx === 0 ? (
-                        <span className="text-red-500 flex-shrink-0">✕</span>
-                      ) : (
-                        <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
-                      )}
-                      <span className="text-slate-700">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+        {/* Pricing */}
+        <section className="px-4 py-16 max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 gradient-text text-center" style={{animation: 'slideUp 0.8s ease-out 0.5s both'}}>AI Packages</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {AI_PACKAGES.map((pkg, idx) => (
+              <div
+                key={idx}
+                className={`glass-dark rounded-2xl p-8 relative overflow-hidden group ${pkg.highlighted ? 'ring-2 ring-accent lg:scale-105' : ''} hover:bg-black/40 transition-all duration-500`}
+                style={{animation: `slideUp 0.6s ease-out ${0.6 + idx * 0.1}s both`}}
+              >
+                {pkg.highlighted && (
+                  <div className="absolute top-0 right-0 px-4 py-2 bg-gradient-to-r from-primary to-accent rounded-bl-xl text-foreground text-xs font-bold">
+                    POPULAR
+                  </div>
+                )}
+                
+                <div className="relative z-10">
+                  <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:gradient-text transition-all">{pkg.name}</h3>
+                  <p className="text-muted-foreground mb-6">{pkg.description}</p>
+                  <div className="text-4xl font-bold gradient-text mb-8">{pkg.price}</div>
+                  <ul className="space-y-3 mb-8">
+                    {pkg.features.map((feature, fIdx) => (
+                      <li key={fIdx} className="flex gap-3 text-sm text-foreground/80 group-hover:text-foreground transition-colors">
+                        <Check className="w-5 h-5 text-accent flex-shrink-0" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button className={`w-full ${pkg.highlighted ? 'bg-gradient-to-r from-primary to-accent hover:from-primary/80 hover:to-accent/80' : 'glass hover:bg-black/50'} font-bold py-3 transition-all duration-300 group-hover:shadow-lg`}>
+                    Get Started
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Pricing */}
-      <section className="px-4 py-16 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">AI Packages</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {AI_PACKAGES.map((pkg, idx) => (
-            <Card
-              key={idx}
-              className={`p-6 ${
-                pkg.highlighted
-                  ? 'border-2 border-purple-600 bg-purple-50'
-                  : 'border-slate-200'
-              }`}
-            >
-              {pkg.highlighted && (
-                <div className="mb-3 inline-block px-3 py-1 rounded-full bg-purple-200 text-purple-700 text-xs font-semibold">
-                  Most Popular
-                </div>
-              )}
-              <h3 className="text-xl font-bold text-slate-900 mb-2">{pkg.name}</h3>
-              <p className="text-sm text-slate-600 mb-4">{pkg.description}</p>
-              <div className="text-3xl font-bold text-slate-900 mb-6">{pkg.price}</div>
-              <ul className="space-y-2 mb-6">
-                {pkg.features.map((feature, fIdx) => (
-                  <li key={fIdx} className="flex gap-2 text-sm text-slate-700">
-                    <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <Button
-                className={`w-full ${
-                  pkg.highlighted
-                    ? 'bg-purple-600 text-white hover:bg-purple-700'
-                    : 'bg-slate-200 text-slate-900 hover:bg-slate-300'
-                }`}
-              >
-                Get Started
+        {/* CTA Section */}
+        <div className="max-w-4xl mx-auto mb-24 px-4" style={{animation: 'slideUp 0.8s ease-out 1s both'}}>
+          <div className="glass-dark rounded-3xl p-12 text-center relative overflow-hidden group cursor-pointer">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-transparent to-accent/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            <div className="relative z-10">
+              <h2 className="text-4xl font-bold mb-4 text-foreground">Ready to Transform?</h2>
+              <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+                Let&apos;s discuss how AI automation can save your team time and boost productivity.
+              </p>
+              <Button className="bg-gradient-to-r from-primary to-accent hover:from-primary/80 hover:to-accent/80 text-foreground font-bold py-6 px-8 rounded-full text-lg transition-all duration-300 hover:shadow-lg hover:shadow-accent/50">
+                Schedule Consultation
+                <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-            </Card>
-          ))}
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
 
-      {/* CTA Section */}
-      <section className="px-4 py-16 bg-gradient-to-r from-purple-600 to-blue-600 text-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Workflows?</h2>
-          <p className="text-lg mb-8 text-purple-100">
-            Let&apos;s discuss how AI automation can save your team time and boost productivity.
-          </p>
-          <Button size="lg" variant="secondary">
-            Schedule a Consultation
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-        </div>
-      </section>
+      <style jsx>{`
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </main>
   )
 }
